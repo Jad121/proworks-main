@@ -19,7 +19,7 @@
                 <span>
                     New Record
                 </span>
-                <a href="{{ uri('status/list') }}">All Record</a>
+                <a href="{{ uri('status/list') }}" class="btn btn-lg btn-success">All Record</a>
             </div>
         </div>
         <!-- END panel-heading -->
@@ -27,35 +27,35 @@
         <div class="panel-body position-relative">
             {{ view('partials.loader') }}
             <form id="addUpdateForm" data-parsley-validate
-                action="{{ $action === 'add' ? uri('status/add') : uri('status/update', ['recordId' => $status['ms_status_id']]) }}"
+                action="{{ $action === 'add' ? uri('status/add') : uri("status/update{$status['ms_status_id']}") }}"
                 method="POST">
                 @csrf
                 <input class="form-control" type="hidden" value="{{$status["ms_status_id"]??''}}" name="id" id="id"> 
         
         
-                <label for="ms_status_name_en" class="col-form-label">status Name English:</label>
-                <input class="form-control" type="text" value="{{$status["ms_status_name_en"]??''}}" name="ms_status_name_en" id="ms_status_name_en"> 
+                <label for="ms_status_name_en" class="col-form-label">Name(En)</label>
+                <input class="form-control" type="text" value="{{$status["ms_status_name_en"]??''}}" name="ms_status_name_en" id="ms_status_name_en" required data-parsley-required-message="Required"> 
         
-                <label for="ms_status_name_ar" class="col-form-label">ms_status_name_ar:</label>
-                <input class="form-control" type="text"   value="{{$status["ms_status_name_ar"]??''}}" name="ms_status_name_ar" id="ms_status_name_ar"> 
+                <label for="ms_status_name_ar" class="col-form-label">Name(AR)</label>
+                <input class="form-control" type="text" dir="rtl"  value="{{$status["ms_status_name_ar"]??''}}" name="ms_status_name_ar" id="ms_status_name_ar" required data-parsley-required-message="Required"> 
         
-                <label for="ms_status_name_cn" class="col-form-label">ms_status_name_cn:</label>
-                <input class="form-control" type="text"  value="{{$status["ms_status_name_cn"]??''}}" name="ms_status_name_cn" id="ms_status_name_cn">
+                <label for="ms_status_name_cn" class="col-form-label">Name(CN)</label>
+                <input class="form-control" type="text"  value="{{$status["ms_status_name_cn"]??''}}" name="ms_status_name_cn" id="ms_status_name_cn" required data-parsley-required-message="Required">
                 
-                <label for="ms_status_key" class="col-form-label">ms_status_key:</label>
-                <input class="form-control" type="text"  value="{{$status["ms_status_key"]??''}}" name="ms_status_key" id="ms_status_key">
+                {{-- <label for="ms_status_key" class="col-form-label">ms_status_key:</label>
+                <input class="form-control" type="text"  value="{{$status["ms_status_key"]??''}}" name="ms_status_key" id="ms_status_key"> --}}
                 
                 @if ($action == 'add')
-                    <button class="btn btn-lg btn-success px-5">
+                    <button class="btn btn-lg btn-success px-5 mt-2">
                         Add
                     </button>
                 @else
-                    <button class="btn btn-lg btn-primary px-5">
+                    <button class="btn btn-lg btn-primary px-5 mt-2">
                         Update
                     </button>
-                    <button class="btn btn-lg btn-danger px-5">
+                    {{-- <button class="btn btn-lg btn-danger px-5">
                         delete
-                    </button>
+                    </button> --}}
                 @endif
 
             </form>

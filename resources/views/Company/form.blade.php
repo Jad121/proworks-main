@@ -21,7 +21,7 @@
                             Update Company
                         @endif
                     </span>
-                    <a href="{{ route('country.list') }}">All Record</a>
+                    <a href="{{ route('country.list') }}" class="btn btn-lg btn-success">All Record</a>
                 </div>
             </div>
             <!-- END panel-heading -->
@@ -29,7 +29,7 @@
             <div class="panel-body position-relative">
                 {{ view('partials.loader') }}
                 <form id="addUpdateForm" data-parsley-validate
-                    action="{{ $action === 'add' ? uri('company/add') : uri('company/update', ['recordId' => $company['ms_company_id']]) }}"
+                    action="{{ $action === 'add' ? uri('company/add') : uri("company/update/{$company['ms_company_id']}") }}"
                     method="POST">
                     @csrf
                     <input class="form-control form-control-lg" type="hidden" value="{{ $company['ms_company_id'] ?? '' }}"
@@ -38,27 +38,27 @@
                         <label for="ms_company_name_en" class="col-form-label">Name(En)</label>
                         <input class="form-control form-control-lg" type="text"
                             value="{{ $company['ms_company_name_en'] ?? '' }}" name="ms_company_name_en"
-                            id="ms_company_name_en">
+                            id="ms_company_name_en" required data-parsley-required-message="Required">
                     </div>
                     <div class="form-group">
                         <label for="ms_company_name_ar" class="col-form-label">Name(AR)</label>
                         <input class="form-control form-control-lg" type="text" dir="rtl"
                             value="{{ $company['ms_company_name_ar'] ?? '' }}" name="ms_company_name_ar"
-                            id="ms_company_name_ar">
+                            id="ms_company_name_ar" required data-parsley-required-message="Required">
                     </div>
                     <div class="form-group">
                         <label for="ms_company_name_cn" class="col-form-label">Name(CN)</label>
                         <input class="form-control form-control-lg" type="text"
                             value="{{ $company['ms_company_name_cn'] ?? '' }}" name="ms_company_name_cn"
-                            id="ms_company_name_cn">
+                            id="ms_company_name_cn" required data-parsley-required-message="Required">
                     </div>
-                    <div class="modal-footer justify-content-center p-2 m-2">
+                    
                         @if ($action == 'add')
                             <button class="btn btn-lg btn-success px-5">Add</button>
                         @else
                             <button class="btn btn-lg btn-primary px-5">Update</button>
                         @endif
-                    </div>
+                  
                 </form>
             </div>
             <!-- END panel-body -->
@@ -95,7 +95,7 @@
 
                     if (response.status == "success") {
                         setTimeout(function() {
-                            location.href = "{{ route('country.list') }}"; // Redirect to the country list page
+                            location.href = "{{ route('company.list') }}";  
                         }, 1000);
                     }
                 },

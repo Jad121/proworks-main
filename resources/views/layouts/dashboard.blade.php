@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{$lang}}">
+<html lang="{{ $lang }}">
 
 <head>
     <meta charset="utf-8" />
@@ -7,6 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
+    <link rel="icon" type="image/png" href="{{asset('images/logo.png')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- ================== BEGIN core-css ================== -->
     <link rel="stylesheet" href="{{ asset(urlVersion('css/vendor.min.css')) }}">
@@ -25,9 +26,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js"></script>
     <script src="{{ asset(urlVersion('js/main.js')) }}"></script>
 
+    <script>
+        var lang=@js($lang);
+        function uri(endPoint) {
+            var url = @js(url('/'));
+            var separator = "?";
+            if (endPoint.includes(separator)) {
+                separator = "&";
+            }
+            return `${url}/${endPoint}${separator}lang=${lang}`;
+        }
+    </script>
 </head>
 
-<body dir="{{$dirc}}">
+<body dir="{{ $dirc }}">
     <!-- BEGIN #loader -->
     <div id="loader" class="app-loader">
         <span class="spinner"></span>
@@ -46,7 +58,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <div class="navbar-brand">
-                    OutSourcing MS
+                  <img src="{{asset('images/logo.png')}}" alt="">
                 </div>
                 <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
                     <span class="icon-bar"></span>
@@ -133,15 +145,15 @@
                             class="caret ms-lg-2"></b>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end me-1">
-                        <a href="extra_profile.html" class="dropdown-item">Edit Profile</a>
+                        {{-- <a href="extra_profile.html" class="dropdown-item">Edit Profile</a>
                         <a href="email_inbox.html" class="dropdown-item d-flex align-items-center">
                             Inbox
                             <span class="badge bg-danger rounded-pill ms-auto pt-5px">2</span>
-                        </a>
-                        <a href="calendar.html" class="dropdown-item">Calendar</a>
-                        <a href="extra_settings_page.html" class="dropdown-item">Settings</a>
+                        </a> --}}
+                        {{-- <a href="calendar.html" class="dropdown-item">Calendar</a>
+                        <a href="extra_settings_page.html" class="dropdown-item">Settings</a> --}}
                         <div class="dropdown-divider"></div>
-                        <a href="login.html" class="dropdown-item">Log Out</a>
+                        <a href="{{uri('logout')}}" class="dropdown-item">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -160,16 +172,16 @@
                             data-target="#appSidebarProfileMenu">
                             <div class="menu-profile-cover with-shadow"></div>
                             <div class="menu-profile-image">
-                                <img src="../assets/img/user/user-13.jpg" alt="" />
+                                <img src="{{asset('images/user-13.jpg')}}" alt="" />
                             </div>
-                            <div class="menu-profile-info">
+                            <div class="menu-profile-info text-white">
                                 <div class="d-flex align-items-center">
                                     <div class="flex-grow-1">
                                         Sean Ngu
                                     </div>
                                     <div class="menu-caret ms-auto"></div>
                                 </div>
-                                <small>Frontend developer</small>
+                                <small class="text-white">Frontend developer</small>
                             </div>
                         </a>
                     </div>
@@ -200,53 +212,55 @@
                     <div class="menu-item">
                         <a href="{{ uri('country/list') }}" class="menu-link">
                             <div class="menu-icon">
-                                <i class="material-icons">extension</i>
+                                <i class="fa-solid fa-globe"></i>
                             </div>
                             <div class="menu-text">Countries </div>
                         </a>
                     </div>
 
                     <div class="menu-item">
-                        <a href="{{  uri('company/list') }}" class="menu-link">
+                        <a href="{{ uri('company/list') }}" class="menu-link">
                             <div class="menu-icon">
-                                <i class="material-icons">extension</i>
+                                <i class="fa-solid fa-building"></i>
                             </div>
                             <div class="menu-text">Companies </div>
                         </a>
                     </div>
 
+                   
                     <div class="menu-item">
-                        <a href="{{  uri('employee/list') }}" class="menu-link">
+                        <a href="{{ uri('service/list') }}" class="menu-link">
                             <div class="menu-icon">
-                                <i class="material-icons">extension</i>
-                            </div>
-                            <div class="menu-text">Employees </div>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="{{  uri('service/list') }}" class="menu-link">
-                            <div class="menu-icon">
-                                <i class="material-icons">extension</i>
+                                <i class="fa-solid fa-bell-concierge"></i>
                             </div>
                             <div class="menu-text">Services </div>
                         </a>
                     </div>
                     <div class="menu-item">
-                        <a href="{{  uri('status/list') }}" class="menu-link">
+                        <a href="{{ uri('status/list') }}" class="menu-link">
                             <div class="menu-icon">
-                                <i class="material-icons">extension</i>
+                                <i class="fa-solid fa-signal"></i>
                             </div>
                             <div class="menu-text">Status </div>
                         </a>
                     </div>
-                    <div class="menu-item">
-                        <a href="{{  uri('user/list') }}" class="menu-link">
+                    {{-- <div class="menu-item">
+                        <a href="{{ uri('user/list') }}" class="menu-link">
                             <div class="menu-icon">
-                                <i class="material-icons">extension</i>
+                                <i class="fa-solid fa-user"></i>
                             </div>
                             <div class="menu-text">Users </div>
                         </a>
                     </div>
+
+                    <div class="menu-item">
+                        <a href="{{ uri('employee/list') }}" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div class="menu-text">Employees </div>
+                        </a>
+                    </div> --}}
 
                 </div>
                 <!-- END menu -->

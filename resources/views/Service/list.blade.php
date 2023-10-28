@@ -6,7 +6,7 @@
         <!-- END breadcrumb -->
         <!-- BEGIN page-header -->
         <h1 class="page-header">
-            {{ __("messages.Services") }}
+            {{ __("Services") }}
         </h1>
         <!-- END page-header -->
         <!-- BEGIN panel -->
@@ -17,7 +17,7 @@
                     <span>
                         {{ __("messages.All Records") }}
                     </span>
-                    <a href="{{ uri('service/form') }}">{{ __("messages.New Record") }}</a>
+                    <a href="{{ uri('service/form') }}" class="btn btn-lg btn-success">{{ __("messages.New Record") }}</a>
                 </div>
             </div>
             <!-- END panel-heading -->
@@ -64,7 +64,7 @@
                                         <a href='{{ uri("service/form") }}/${data.ms_service_id}' class="btn btn-lg btn-primary">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </a>
-                                        <button data-delete-record class="btn btn-lg btn-danger">
+                                        <button  data-record-id='${data.ms_service_id}'   data-delete-record class="btn btn-lg btn-danger">
                                             <i class="fa-solid fa-delete-left"></i>
                                         </button>`;
                                     }
@@ -75,6 +75,27 @@
                         $('[data-add-record]').click(function() {
                             loadHtml('#addUpdateModal .modal-content', "{{ uri('service/form') }}");
                             $('#addUpdateModal').modal('show');
+                        });
+
+                        $(document).on("click", "[data-delete-record]", function() {
+                            if (!confirm("Confirm Delete?")) {
+                                return;
+                            }
+                            var trParent= $(this).parents("tr");
+                            $.ajax({
+                                type: "post",
+                                url: uri("service/delete"),
+                                headers:csrfHeader(),
+                                data: {
+                                    recordId: $(this).attr("data-record-id")
+                                },
+                               
+                                success: function(response) {
+                                    toast(response);
+                                    trParent.remove();
+
+                                }
+                            });
                         });
                     });
                 </script>

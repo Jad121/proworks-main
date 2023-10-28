@@ -8,14 +8,11 @@
             <!-- BEGIN login-header -->
             <div class="login-header">
                 <div class="brand">
-                    <div>
-                        <span class="logo"></span>
-                        <b class="me-1">ProWorks</b> Admin
+                    <div class="center">
+                      <img src="{{asset('images/logo.png')}}"  class="col-12 mx-auto">
                     </div>
                 </div>
-                <div class="icon">
-                    <i class="fa-solid fa-lock fa-2xl"></i>
-                </div>
+               
             </div>
             <!-- END login-header -->
 
@@ -38,7 +35,7 @@
                         </div>
                     </form>
                     @error('ws_user_email')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <div class="alert alert-danger mt-2">{{ $message }}</div>
                     @enderror
                 </div>
                 <!-- END login-content -->

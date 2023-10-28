@@ -27,35 +27,35 @@
             <div class="panel-body position-relative">
                 {{ view('partials.loader') }}
                 <form id="addUpdateForm" data-parsley-validate
-                    action="{{ $action === 'add' ? uri('service/add') : uri('service/update', ['recordId' => $service['ms_service_id']]) }}"
+                    action="{{ $action === 'add' ? uri('service/add') : uri("service/update/{$service['ms_service_id']} ") }}"
                     method="POST">
                     @csrf
                     <input class="form-control" type="hidden" value="{{$service["ms_service_id"]??''}}" name="id" id="id"> 
 
 
-                    <label for="ms_service_name_en" class="col-form-label">service Name English:</label>
-                    <input class="form-control" type="text" value="{{$service["ms_service_name_en"]??''}}" name="ms_service_name_en" id="ms_service_name_en"> 
+                    <label for="ms_service_name_en" class="col-form-label">Name(EN):</label>
+                    <input class="form-control" type="text" value="{{$service["ms_service_name_en"]??''}}" name="ms_service_name_en" id="ms_service_name_en" required data-parsley-required-message="Required"> 
 
-                    <label for="ms_service_name_ar" class="col-form-label">ms_service_name_ar:</label>
-                    <input class="form-control" type="text"   value="{{$service["ms_service_name_ar"]??''}}" name="ms_service_name_ar" id="ms_service_name_ar"> 
+                    <label for="ms_service_name_ar" class="col-form-label">Name(AR):</label>
+                    <input class="form-control" type="text"   value="{{$service["ms_service_name_ar"]??''}}" name="ms_service_name_ar" id="ms_service_name_ar" required data-parsley-required-message="Required"> 
 
-                    <label for="ms_service_name_cn" class="col-form-label">ms_service_name_cn:</label>
-                    <input class="form-control" type="text"  value="{{$service["ms_service_name_cn"]??''}}" name="ms_service_name_cn" id="ms_service_name_cn">
+                    <label for="ms_service_name_cn" class="col-form-label">Name(CN):</label>
+                    <input class="form-control" type="text"  value="{{$service["ms_service_name_cn"]??''}}" name="ms_service_name_cn" id="ms_service_name_cn" required data-parsley-required-message="Required">
                     
-                    <label for="ms_service_fees" class="col-form-label">ms_service_fees:</label>
-                    <input class="form-control" type="text"  value="{{$service["ms_service_fees"]??''}}" name="ms_service_fees" id="ms_service_fees">
+                    <label for="ms_service_fees" class="col-form-label">Fees:</label>
+                    <input class="form-control" type="number"  value="{{$service["ms_service_fees"]??''}}" name="ms_service_fees" id="ms_service_fees" required data-parsley-required-message="Required">
                     
                     @if ($action == 'add')
-                        <button class="btn btn-lg btn-success px-5">
+                        <button class="btn btn-lg btn-success px-5 mt-2">
                             Add
                         </button>
                     @else
-                        <button class="btn btn-lg btn-primary px-5">
+                        <button class="btn btn-lg btn-primary px-5 mt-2">
                             Update
                         </button>
-                        <button class="btn btn-lg btn-danger px-5">
+                        {{-- <button class="btn btn-lg btn-danger px-5">
                             delete
-                        </button>
+                        </button> --}}
                     @endif
 
                 </form>

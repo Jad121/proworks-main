@@ -52,14 +52,14 @@ class StatusController extends Controller
             'ms_status_name_en' => 'required',
             'ms_status_name_ar' => 'required',
             'ms_status_name_cn' => 'required',
-            'ms_status_key' => 'required',
+            // 'ms_status_key' => 'required',
         ]);
 
         status::create([
             'ms_status_name_en' => $request->ms_status_name_en,
             'ms_status_name_ar' => $request->ms_status_name_ar,
             'ms_status_name_cn' => $request->ms_status_name_cn,
-            'ms_status_key' => $request->ms_status_key,
+            'ms_status_key' => "",
             'ms_status_created_by' => auth()->user()->ws_user_id,
            
 
@@ -76,7 +76,7 @@ class StatusController extends Controller
             'ms_status_name_en' => 'required',
             'ms_status_name_ar' => 'required',
             'ms_status_name_cn' => 'required',
-            'ms_status_key' => 'required',
+            // 'ms_status_key' => 'required',
 
         ]);
 
@@ -84,7 +84,7 @@ class StatusController extends Controller
             'ms_status_name_en' => $request->ms_status_name_en,
             'ms_status_name_ar' => $request->ms_status_name_ar,
             'ms_status_name_cn' => $request->ms_status_name_cn,
-            'ms_status_key' => $request->ms_status_key,
+            'ms_status_key' => "",
             'ms_status_updated_by' => auth()->user()->ws_user_id,
             'ms_status_updated_date' => Carbon::now()->toDateTimeString(),
 

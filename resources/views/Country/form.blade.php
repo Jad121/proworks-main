@@ -20,7 +20,7 @@
                     <span>
                         New Record
                     </span>
-                    <a href="{{ uri('country/list') }}">All Record</a>
+                    <a href="{{ uri('country/list') }}" class="btn btn-lg btn-success">All Record</a>
                 </div>
             </div>
             <!-- END panel-heading -->
@@ -28,7 +28,7 @@
             <div class="panel-body position-relative">
                 {{ view('partials.loader') }}
                 <form id="addUpdateForm" data-parsley-validate
-                    action="{{ $action === 'add' ? uri('country/add') : uri('country/update', ['recordId' => $country['ws_country_id']]) }}"
+                    action="{{ $action === 'add' ? uri('country/add') : uri("country/update/{$country['ws_country_id']}")}}"
                     method="POST">
 
 
@@ -70,9 +70,9 @@
                         <button class="btn btn-lg btn-primary px-5">
                             Update
                         </button>
-                        <button class="btn btn-lg btn-danger px-5">
+                        {{-- <button class="btn btn-lg btn-danger px-5">
                             delete
-                        </button>
+                        </button> --}}
                     @endif
 
 

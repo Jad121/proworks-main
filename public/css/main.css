@@ -1,5 +1,282 @@
+:root {
+    --theme-color: hsl(225, 21%, 33%);
+    --theme-color-light: hsl(225, 21%, 53%);
+    --theme-color-dark: hsl(225, 21%, 13%);
+    /* --theme2-color: hsl(145, 65%, 65%);
+    --theme2-color-light: hsl(359deg 100% 63% / 26%);
+    --theme2-color-dark: hsl(359, 100%, 23%); */
+}
+
+ 
+* {
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #F8F8F8;
+}
+
+::selection {
+    background-color: var(--theme-color);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #222;
+}
+
+a {
+    text-decoration: none;
+}
+
+.link {
+    color: var(--theme-color);
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.btn-white {
+    background-color: white;
+}
+
+.hover-splash:hover,
+.btn-white:hover {
+    background-color: rgba(189, 197, 209, .2) !important;
+}
+
+.btn-theme {
+    background-color: var(--theme-color);
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-theme:hover {
+    background-color: var(--theme-color-dark);
+    color: white;
+}
+
+.btn-theme2 {
+    background-color: var(--theme2-color);
+    color: white;
+    transition: all 0.3s;
+}
+
+.btn-theme2:hover {
+    background-color: var(--theme2-color-dark);
+    color: white;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option.select2-results__option--selected,
+.select2-container--bootstrap-5 .select2-dropdown .select2-results__options .select2-results__option[aria-selected=true]:not(.select2-results__option--highlighted),
+.dropdown-item.active,
+.dropdown-item:active {
+    background-color: var(--theme-color) !important;
+    color: white;
+}
+
+.select2-container {
+    width: 100% !important;
+}
+
+ 
+
+.row {
+    margin: 0;
+}
+
 .form-group {
-    margin: 5px 0;
+    margin: 0.5rem 0;
+    position: relative;
+}
+
+.form-check-input:focus,
+.select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field:focus,
+.select2-container--bootstrap-5.select2-container--focus .select2-selection,
+.select2-container--bootstrap-5.select2-container--open .select2-selection,
+.form-select:focus,
+.form-control:focus {
+    box-shadow: none !important;
+    border-color: var(--theme-color) !important;
+}
+
+.form-check-input:checked {
+    background-color: var(--theme-color) !important;
+    border-color: var(--theme-color) !important;
+}
+
+.select2-container--bootstrap-5 .select2-dropdown {
+    border-color: var(--theme-color) !important;
+    z-index: 99999 !important;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.w-limit {
+    max-width: 1500px;
+}
+
+.w-fit {
+    width: fit-content !important;
+}
+
+.h-0 {
+    height: 0;
+}
+
+.min-h-100 {
+    min-height: 100%;
+}
+
+.btn-blue {
+    background-color: #0060df !important;
+    color: white !important;
+}
+
+.btn-blue:hover {
+    background-color: #0250bb !important;
+}
+
+.bg-theme {
+    background-color: var(--theme-color) !important;
+}
+
+.bg-theme-dark {
+    background-color: var(--theme-color) !important;
+}
+
+.bg-theme-light {
+    background-color: var(--primary-light) !important;
+}
+
+.text-theme {
+    color: var(--theme-color) !important;
+}
+
+.text-theme-dark {
+    color: var(--theme-color) !important;
+}
+
+.text-theme-light {
+    color: var(--primary-light) !important;
+}
+
+.bg-theme2 {
+    background-color: var(--theme2-color) !important;
+}
+
+.bg-theme2-dark {
+    background-color: var(--theme2-color) !important;
+}
+
+.bg-theme2-light {
+    background-color: var(--primary2-light) !important;
+}
+
+.text-theme2 {
+    color: var(--theme2-color) !important;
+}
+
+.text-theme2-dark {
+    color: var(--theme2-color) !important;
+}
+
+.text-theme2-light {
+    color: var(--primary2-light) !important;
+}
+
+.scrollbar-0::-webkit-scrollbar {
+    width: 0px;
+    height: 0;
+}
+
+.scrollbar-5::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+.selected {
+    background-color: var(--theme-color-dark) !important;
+}
+
+.of-contain {
+    object-fit: contain;
+}
+
+.of-cover {
+    object-fit: cover;
+}
+
+.space-y {
+    margin: 10px 0;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+.border-theme {
+    border-color: var(--theme-color) !important;
+}
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.hide {
+    display: none;
+}
+
+.transition {
+    transition: all 0.3s;
+}
+
+.no-select {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+ 
+
+.hide-spin::-webkit-outer-spin-button,
+.hide-spin::-webkit-inner-spin-button {
+    display: none;
 }
 
 .z-1 {
@@ -50,6 +327,78 @@
     z-index: 9999;
 }
 
+.loader {
+    height: 5px;
+    background-color: black;
+    width: 40%;
+    border-radius: 20px;
+    animation: 0.8s slideAnimation linear infinite;
+}
+
+.translate-y-100 {
+    transform: translateY(100%);
+}
+
+.hover-shimmer:hover,
+.shimmer {
+    -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/300% 100%;
+    background-repeat: no-repeat;
+    animation: shimmer 2.5s infinite;
+}
+
+.hover-shimmer:hover {
+    animation: shimmer 0.7s forwards;
+}
+
+.hover-border {
+    border-color: transparent !important;
+}
+
+.hover-border:hover {
+    border-color: var(--border-color) !important;
+}
+
+@keyframes shimmer {
+    100% {
+        -webkit-mask-position: left
+    }
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.zoom {
+    cursor: zoom-in;
+}
+
+.grab {
+    cursor: grab;
+}
+
+.clamp1,
+.clamp2,
+.clamp3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.clamp1 {
+    -webkit-line-clamp: 1;
+}
+
+.clamp2 {
+    -webkit-line-clamp: 2;
+}
+
+.clamp3 {
+    -webkit-line-clamp: 3;
+}
+.form-group {
+    margin: 5px 0;
+}
+ 
 .center {
     display: flex;
     flex-direction: column;

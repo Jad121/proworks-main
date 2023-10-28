@@ -10,19 +10,21 @@ function urlVersion($url = "")
 
 function  uri($endPoint = "")
 {
-    if (strpos($endPoint, "#") !== false) {
-        return $endPoint;
-    }
-    $separator = "?";
-    if (strpos($endPoint, $separator) !== false) {
-        $separator = "&";
-    }
+    return url($endPoint);
 
-    $queryString = "";
-    if (request()->has("pwa")) {
-        $queryString = "&pwa";
-    }
-    return url("{$endPoint}{$separator}lang=" . App::getLocale() . "$queryString");
+    // if (strpos($endPoint, "#") !== false) {
+    //     return $endPoint;
+    // }
+    // $separator = "?";
+    // if (strpos($endPoint, $separator) !== false) {
+    //     $separator = "&";
+    // }
+
+    // $queryString = "";
+    // if (request()->has("pwa")) {
+    //     $queryString = "&pwa";
+    // }
+    // return url("{$endPoint}{$separator}lang=" . App::getLocale() . "$queryString");
 }
 
 function lang()
